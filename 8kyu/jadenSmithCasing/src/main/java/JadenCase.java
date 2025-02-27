@@ -9,14 +9,14 @@ public class JadenCase {
     }
 
     public static String toJadenCase(String phrase) {
-        if (phrase == null || phrase.isEmpty()) {
+        if (phrase == null || phrase.isEmpty()) { //empty string or null check
             return null;
         }
 
-        return Arrays.stream(phrase.split(" "))
-                .filter(word -> !word.isEmpty())
-                .map(word -> Character.toUpperCase(word.charAt(0)) + word.substring(1).toLowerCase())
-                .collect(Collectors.joining(" "));
+        return Arrays.stream(phrase.split(" ")) //splits the string by spaces
+                .filter(word -> !word.isEmpty()) //ensures that any empty words (which can occur due to multiple spaces) are ignored
+                .map(word -> Character.toUpperCase(word.charAt(0)) + word.substring(1).toLowerCase()) //capitalizes the first letter of each word and converts the rest of the letters to lowercase
+                .collect(Collectors.joining(" ")); //processed words are then joined back into a single string with spaces between them
     }
 
     //other soultion
